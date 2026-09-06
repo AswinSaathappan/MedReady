@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MedReady | IoT Monitoring</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+        }
+    }
+    </script>
+
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div>
+        <div class="eyebrow">
+            IoT MEDICAL EQUIPMENT MONITORING
+        </div>
+
+        <h1>MedReady</h1>
+
+        <p>
+            Real-time medical equipment readiness monitoring
+        </p>
+    </div>
+
+    <div class="mqtt-badge">
+        <span class="mqtt-dot"></span>
+        <span id="connectionText">Connecting...</span>
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- TOP TWO PANELS -->
+
+    <section class="hero-grid">
+
+
+        <!-- EQUIPMENT STATUS -->
+
+        <div class="panel equipment-panel">
+
+            <div class="panel-title">
+                EQUIPMENT READINESS
+            </div>
+
+            <div class="equipment-header">
+
+                <div>
+
+                    <h2 id="deviceId">
+                        PUMP-12
+                    </h2>
+
+                    <p id="location">
+                        ICU-2
+                    </p>
+
+                </div>
+
+                <div
+                    id="statusBadge"
+                    class="status-badge ready">
+
+                    <span class="status-dot"></span>
+
+                    <span id="statusText">
+                        READY
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="battery-section">
+
+                <div class="metric-heading">
+
+                    <span>BATTERY LEVEL</span>
+
+                    <strong id="batteryValue">
+                        92%
+                    </strong>
+
+                </div>
+
+                <div class="progress">
+
+                    <div
+                        id="batteryFill"
+                        class="progress-fill">
+                    </div>
+
+                </div>
+
+                <p class="helper">
+                    Current equipment battery condition
+                </p>
+
+            </div>
+
+
+            <!-- PHANTOM AVAILABILITY -->
+
+            <div
+                id="phantomCard"
+                class="phantom-card safe">
+
+                <div class="phantom-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <div class="phantom-title">
+                        NO PHANTOM AVAILABILITY
+                    </div>
+
+                    <p id="phantomMessage">
+                        Equipment is available and ready for use.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- 3D EQUIPMENT -->
+
+        <div class="panel three-panel">
+
+            <div class="three-header">
+
+                <div>
+
+                    <div class="panel-title">
+                        LIVE 3D EQUIPMENT
+                    </div>
+
+                    <p>
+                        Drag to rotate · Scroll to zoom
+                    </p>
+
+                </div>
+
+                <div class="live-tag">
+                    LIVE
+                </div>
+
+            </div>
+
+            <div
+                id="threeCanvas"
+                class="three-canvas">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- METRIC CARDS -->
+
+    <section class="metric-grid">
+
+
+        <div class="metric-card">
+
+            <div class="metric-icon battery-icon">
+                %
+            </div>
+
+            <div>
+
+                <h3>BATTERY</h3>
+
+                <strong id="batteryCard">
+                    92%
+                </strong>
+
+                <p>
+                    Equipment power level
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="metric-card">
+
+            <div class="metric-icon fault-icon">
+                !
+            </div>
+
+            <div>
+
+                <h3>EQUIPMENT FAULT</h3>
+
+                <strong id="faultValue">
+                    NONE
+                </strong>
+
+                <p>
+                    Device diagnostic status
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="metric-card">
+
+            <div class="metric-icon location-icon">
+                L
+            </div>
+
+            <div>
+
+                <h3>LOCATION</h3>
+
+                <strong id="locationValue">
+                    ICU-2
+                </strong>
+
+                <p>
+                    Current equipment location
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="metric-card">
+
+            <div class="metric-icon update-icon">
+                ↻
+            </div>
+
+            <div>
+
+                <h3>LAST UPDATE</h3>
+
+                <strong id="lastUpdate">
+                    --
+                </strong>
+
+                <p>
+                    Latest MQTT reading
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- READINESS -->
+
+    <section class="panel readiness-panel">
+
+        <div class="readiness-header">
+
+            <div>
+
+                <div class="panel-title">
+                    MEDREADY READINESS ENGINE
+                </div>
+
+                <h2>
+                    Equipment Status
+                </h2>
+
+            </div>
+
+            <div class="topic">
+                medready/aswin/equipment
+            </div>
+
+        </div>
+
+
+        <div class="readiness-grid">
+
+
+            <div
+                id="readyCard"
+                class="readiness-card ready-card">
+
+                <span class="readiness-symbol">
+                    ✓
+                </span>
+
+                <div>
+
+                    <h3>READY</h3>
+
+                    <p>
+                        Available for immediate use
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="warningCard"
+                class="readiness-card warning-card">
+
+                <span class="readiness-symbol">
+                    !
+                </span>
+
+                <div>
+
+                    <h3>WARNING</h3>
+
+                    <p>
+                        Equipment requires attention
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="notReadyCard"
+                class="readiness-card danger-card">
+
+                <span class="readiness-symbol">
+                    ×
+                </span>
+
+                <div>
+
+                    <h3>NOT READY</h3>
+
+                    <p>
+                        Equipment must not be used
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- MQTT DATA -->
+
+    <section class="panel mqtt-panel">
+
+        <div class="readiness-header">
+
+            <div>
+
+                <div class="panel-title">
+                    MQTT COMMUNICATION
+                </div>
+
+                <h2>
+                    Live Equipment Data
+                </h2>
+
+            </div>
+
+            <span id="mqttStatus">
+                Waiting for data
+            </span>
+
+        </div>
+
+
+        <pre id="mqttData">Waiting for MQTT data...</pre>
+
+    </section>
+
+
+</main>
+
+
+<script
+    type="module"
+    src="js/dashboard.js">
+</script>
+
+</body>
+</html>

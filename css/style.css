@@ -1,0 +1,861 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f5f8fc;
+
+    color: #102a43;
+
+    min-height: 100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+
+    padding: 30px 4% 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e3eaf2;
+}
+
+
+.eyebrow {
+
+    color: #2764c4;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 6px;
+}
+
+
+.header h1 {
+
+    font-size: 44px;
+
+    line-height: 1;
+
+    color: #102a43;
+
+    margin-bottom: 10px;
+}
+
+
+.header p {
+
+    color: #607d9b;
+
+    font-size: 15px;
+}
+
+
+.mqtt-badge {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 11px 18px;
+
+    border: 1px solid #b8ead3;
+
+    border-radius: 25px;
+
+    background: #f7fffb;
+
+    color: #159a62;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.mqtt-dot {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #19a66a;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+
+    width: 92%;
+
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    padding: 28px 0 50px;
+}
+
+
+/* =========================
+   PANELS
+========================= */
+
+.panel {
+
+    background: white;
+
+    border: 1px solid #e1e8f0;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 30px rgba(24, 55, 90, 0.06);
+}
+
+
+.panel-title {
+
+    color: #52708f;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 20px;
+}
+
+
+.equipment-panel {
+
+    padding: 30px;
+}
+
+
+.equipment-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-top: 22px;
+}
+
+
+.equipment-header h2 {
+
+    font-size: 38px;
+
+    color: #102a43;
+}
+
+
+.equipment-header p {
+
+    margin-top: 5px;
+
+    color: #65819d;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status-badge {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 15px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.status-badge.ready {
+
+    background: #e9f9f1;
+
+    color: #159a62;
+}
+
+
+.status-badge.warning {
+
+    background: #fff7df;
+
+    color: #c58a00;
+}
+
+
+.status-badge.not-ready {
+
+    background: #ffeded;
+
+    color: #d63d3d;
+}
+
+
+.status-dot {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: currentColor;
+}
+
+
+/* =========================
+   BATTERY
+========================= */
+
+.battery-section {
+
+    margin-top: 45px;
+}
+
+
+.metric-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    color: #52708f;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+}
+
+
+.metric-heading strong {
+
+    font-size: 30px;
+
+    color: #1759bb;
+
+    letter-spacing: 0;
+}
+
+
+.progress {
+
+    height: 14px;
+
+    background: #e5edf7;
+
+    border-radius: 20px;
+
+    margin-top: 15px;
+
+    overflow: hidden;
+}
+
+
+.progress-fill {
+
+    height: 100%;
+
+    width: 92%;
+
+    background: #276dcc;
+
+    border-radius: 20px;
+
+    transition:
+        width 0.5s ease;
+}
+
+
+.helper {
+
+    margin-top: 9px;
+
+    color: #7890a7;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   PHANTOM AVAILABILITY
+========================= */
+
+.phantom-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-top: 35px;
+
+    padding: 17px;
+
+    border-radius: 14px;
+}
+
+
+.phantom-card.safe {
+
+    background: #eefaf4;
+
+    border: 1px solid #cceedd;
+}
+
+
+.phantom-card.detected {
+
+    background: #fff0f0;
+
+    border: 1px solid #f3c4c4;
+}
+
+
+.phantom-icon {
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #d9f4e7;
+
+    color: #159a62;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+
+.detected .phantom-icon {
+
+    background: #ffdada;
+
+    color: #d63d3d;
+}
+
+
+.phantom-title {
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    color: #159a62;
+}
+
+
+.detected .phantom-title {
+
+    color: #d63d3d;
+}
+
+
+.phantom-card p {
+
+    margin-top: 5px;
+
+    font-size: 12px;
+
+    color: #657d95;
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   3D
+========================= */
+
+.three-panel {
+
+    min-height: 510px;
+
+    overflow: hidden;
+}
+
+
+.three-header {
+
+    padding: 25px 28px 0;
+
+    display: flex;
+
+    justify-content: space-between;
+}
+
+
+.three-header p {
+
+    color: #7c91a6;
+
+    font-size: 11px;
+}
+
+
+.live-tag {
+
+    height: fit-content;
+
+    padding: 6px 12px;
+
+    border: 1px solid #d8e4ef;
+
+    border-radius: 20px;
+
+    color: #52708f;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+.three-canvas {
+
+    height: 430px;
+
+    width: 100%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #f9fbff,
+            #edf3fa
+        );
+}
+
+
+/* =========================
+   METRIC CARDS
+========================= */
+
+.metric-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-top: 20px;
+}
+
+
+.metric-card {
+
+    background: white;
+
+    border: 1px solid #e1e8f0;
+
+    border-radius: 17px;
+
+    padding: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    box-shadow:
+        0 6px 20px rgba(24, 55, 90, 0.045);
+}
+
+
+.metric-icon {
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    font-weight: 800;
+
+    flex-shrink: 0;
+}
+
+
+.battery-icon {
+
+    background: #e7f0ff;
+
+    color: #2869c6;
+}
+
+
+.fault-icon {
+
+    background: #fff2d9;
+
+    color: #c78b00;
+}
+
+
+.location-icon {
+
+    background: #e9e8ff;
+
+    color: #635fc7;
+}
+
+
+.update-icon {
+
+    background: #e7f8f0;
+
+    color: #159a62;
+}
+
+
+.metric-card h3 {
+
+    color: #617d99;
+
+    font-size: 11px;
+
+    letter-spacing: 0.8px;
+
+    margin-bottom: 6px;
+}
+
+
+.metric-card strong {
+
+    font-size: 21px;
+
+    color: #183b60;
+}
+
+
+.metric-card p {
+
+    margin-top: 4px;
+
+    font-size: 10px;
+
+    color: #8aa0b5;
+}
+
+
+/* =========================
+   READINESS
+========================= */
+
+.readiness-panel {
+
+    margin-top: 20px;
+
+    padding: 26px;
+}
+
+
+.readiness-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+
+.readiness-header h2 {
+
+    font-size: 21px;
+
+    color: #183b60;
+}
+
+
+.topic {
+
+    color: #7189a1;
+
+    font-family: monospace;
+
+    font-size: 11px;
+}
+
+
+.readiness-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+
+.readiness-card {
+
+    padding: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    border: 1px solid #e2e9f1;
+
+    border-radius: 14px;
+
+    opacity: 0.45;
+
+    transition: 0.25s;
+}
+
+
+.readiness-card.active {
+
+    opacity: 1;
+
+    box-shadow:
+        0 5px 18px rgba(30, 70, 110, 0.08);
+}
+
+
+.readiness-symbol {
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    font-size: 21px;
+
+    font-weight: 800;
+}
+
+
+.ready-card .readiness-symbol {
+
+    background: #e4f8ee;
+
+    color: #159a62;
+}
+
+
+.warning-card .readiness-symbol {
+
+    background: #fff3d4;
+
+    color: #c68a00;
+}
+
+
+.danger-card .readiness-symbol {
+
+    background: #ffe4e4;
+
+    color: #d63d3d;
+}
+
+
+.readiness-card h3 {
+
+    color: #244766;
+
+    font-size: 13px;
+}
+
+
+.readiness-card p {
+
+    color: #8297aa;
+
+    font-size: 10px;
+
+    margin-top: 4px;
+}
+
+
+/* =========================
+   MQTT
+========================= */
+
+.mqtt-panel {
+
+    margin-top: 20px;
+
+    padding: 26px;
+}
+
+
+#mqttStatus {
+
+    color: #159a62;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+#mqttData {
+
+    margin-top: 15px;
+
+    padding: 17px;
+
+    background: #f4f7fb;
+
+    border: 1px solid #e2e9f1;
+
+    border-radius: 11px;
+
+    color: #315675;
+
+    font-size: 12px;
+
+    overflow-x: auto;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+
+    .hero-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .metric-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .header {
+
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    .header h1 {
+
+        font-size: 34px;
+    }
+
+    .metric-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .readiness-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .readiness-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+}
